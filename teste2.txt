@@ -1,0 +1,42 @@
+-{ 
+/*atoms*/
+int a;
+a = 3;
+/*read(a);*/
+int b = 1 + 1;
+float c;
+a = 3;
+float d = 3.4;
+string e;
+string f = "ola";
+
+
+z = 3;
+
+/*structures*/
+set g;
+set h = {};
+set i = {1,"ola", 3.2};
+
+list j;
+list k = [];
+list l = [1,"ola", 3.2];
+
+tuple m;
+tuple n = ();
+tuple o = (1,"ola", 3.2);
+
+int y = 3;
+
+dict p;
+dict q = {};
+dict r = {1:"ola", 3.2:"mundo"};
+
+print("start");
+
+read(a);
+
+if(a==3){
+    a = 5;
+}
+}-
