@@ -1,0 +1,132 @@
+<!DOCTYPE html><html lang="pt"><head><meta charset="UTF-8"><link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"><title>EG - TP3</title></head><body>
+    <div class="w3-top">
+            <div class="w3-bar w3-yellow intronav">
+                <header>
+                        <a href="output.html" class="w3-bar-item w3-button w3-hover-black w3-padding-16 w3-text-black w3-hover-text-white w3-xlarge">Code Analysis</a>
+                        <a href="codeHTML.html" class="w3-bar-item w3-button w3-hover-black w3-padding-16 w3-text-black w3-hover-text-white w3-xlarge">Original Code</a>   
+                        <a href="sugestao.html" class="w3-bar-item w3-button w3-hover-black w3-padding-16 w3-text-black w3-hover-text-white w3-xlarge">Nested If's Suggestions</a>
+                        <a href="sdg.html" class="w3-bar-item w3-button w3-hover-black w3-padding-16 w3-text-black w3-hover-text-white w3-xlarge">SDG</a>
+                        <a href="cfg.html" class="w3-bar-item w3-button w3-hover-black w3-padding-16 w3-text-black w3-hover-text-white w3-xlarge">CFG</a>
+                        <a href="mccabe.html" class="w3-bar-item w3-button w3-hover-black w3-padding-16 w3-text-black w3-hover-text-white w3-xlarge">McCabe Complexity and Islands</a>
+                </header>
+            </div>
+        </div>
+    <h1> CFG </h1>digraph G {
+	"entry" -> "atomic_0 int a"
+	"atomic_0 int a" -> "atrib_0 a = 3"
+	"atrib_0 a = 3" -> "atomic_1 int b = 1 + 1"
+	"atomic_1 int b = 1 + 1" -> "atomic_2 float c"
+	"atomic_2 float c" -> "atrib_1 a = 3"
+	"atrib_1 a = 3" -> "atomic_3 float d = 3.4"
+	"atomic_3 float d = 3.4" -> "atomic_4 string e"
+	"atomic_4 string e" -> "atomic_5 string f = 'ola'"
+	"atomic_5 string f = 'ola'" -> "atrib_2 z = 3"
+	"atrib_2 z = 3" -> "structure_0 set g"
+	"structure_0 set g" -> "structure_1 set h = {}"
+	"structure_1 set h = {}" -> "structure_2 set i = {1, 'ola', 3.2}"
+	"structure_2 set i = {1, 'ola', 3.2}" -> "structure_3 list j"
+	"structure_3 list j" -> "structure_4 list k = []"
+	"structure_4 list k = []" -> "structure_5 list l = [1, 'ola', 3.2]"
+	"structure_5 list l = [1, 'ola', 3.2]" -> "structure_6 tuple m"
+	"structure_6 tuple m" -> "structure_7 tuple n = ()"
+	"structure_7 tuple n = ()" -> "structure_8 tuple o = (1, 'ola', 3.2)"
+	"structure_8 tuple o = (1, 'ola', 3.2)" -> "atomic_6 int y = 3"
+	"atomic_6 int y = 3" -> "structure_9 dict p"
+	"structure_9 dict p" -> "structure_10 dict q = {}"
+	"structure_10 dict q = {}" -> "structure_11 dict r = {1 : 'ola', 3.2 : 'mundo'}"
+	"structure_11 dict r = {1 : 'ola', 3.2 : 'mundo'}" -> "print_0 print('start')"
+	"print_0 print('start')" -> "while_0_start while(a < 0)"
+	"while_0_start while(a < 0)" -> "while_0_end while(a < 0)"
+	"while_0_start while(a < 0)" -> a < 0"print_1 print('while')"
+	"print_1 print('while')" -> "while_0_start while(a < 0)"
+	"while_0_end while(a < 0)" -> "for_0_start"
+	"for_0_start" -> "initcicle_0 a = 0"
+	"initcicle_0 a = 0" -> "for_0_cond (a < 20)"
+	"for_0_cond (a < 20)" -> "for_0_end"
+	"for_0_cond (a < 20)" -> "print_2 print('oi')"
+	"print_2 print('oi')" -> "inc_0 a++"
+	"inc_0 a++" -> "for_0_cond (a < 20)"
+	"for_0_end" -> "repeat_0_start repeat(5)"
+	"repeat_0_start repeat(5)" -> "repeat_0_end repeat(5)"
+	"repeat_0_start repeat(5)" -> "print_3 print('ola')"
+	"print_3 print('ola')" -> "repeat_0_start repeat(5)"
+	"repeat_0_end repeat(5)" -> "if_0_start if(a == 0)"
+	"if_0_start if(a == 0)" -> "if_1_start if(c == 3)"
+	"if_1_start if(c == 3)" -> "print_4 print('olaMundo')"
+	"print_4 print('olaMundo')" -> "for_1_start"
+	"for_1_start" -> "initcicle_1 a = 3"
+	"initcicle_1 a = 3" -> "for_1_cond (a == 3)"
+	"for_1_cond (a == 3)" -> "for_1_end"
+	"for_1_cond (a == 3)" -> "print_5 print('reset')"
+	"print_5 print('reset')" -> "if_2_start if(c != 3)"
+	"if_2_start if(c != 3)" -> "print_6 print(b)"
+	"print_6 print(b)" -> "if_2_end if(c != 3)"
+	"if_2_start if(c != 3)" -> "if_2_end if(c != 3)"
+	"if_2_end if(c != 3)" -> "inc_1 a++"
+	"inc_1 a++" -> "for_1_cond (a == 3)"
+	"for_1_end" -> "if_2_end if(c == 3)"
+	"if_2_start if(c == 3)" -> "if_2_end if(c == 3)"
+	"if_2_end if(c == 3)" -> "if_2_end if(a == 0)"
+	"if_2_start if(a == 0)" -> "if_2_end if(a == 0)"
+	"if_2_end if(a == 0)" -> "if_3_start if(a == 1)"
+	"if_3_start if(a == 1)" -> "if_4_start if(a == 0)"
+	"if_4_start if(a == 0)" -> "print_7 print('coco')"
+	"print_7 print('coco')" -> "atomic_7 int y = 3 + 1"
+	"atomic_7 int y = 3 + 1" -> "while_1_start while(y < 5)"
+	"while_1_start while(y < 5)" -> "while_1_end while(y < 5)"
+	"while_1_start while(y < 5)" -> y < 5"atrib_3 y = y + 1"
+	"atrib_3 y = y + 1" -> "while_1_start while(y < 5)"
+	"while_1_end while(y < 5)" -> "if_4_end if(a == 0)"
+	"if_4_start if(a == 0)" -> "if_4_end if(a == 0)"
+	"if_4_end if(a == 0)" -> "if_4_end if(a == 1)"
+	"if_4_start if(a == 1)" -> "if_4_end if(a == 1)"
+	"if_4_end if(a == 1)" -> "if_5_start if(b == 3)"
+	"if_5_start if(b == 3)" -> "if_6_start if(b == 3)"
+	"if_6_start if(b == 3)" -> "if_7_start if(b == 3)"
+	"if_7_start if(b == 3)" -> "atomic_8 int x = 3 + 1"
+	"atomic_8 int x = 3 + 1" -> "structure_12 set teste = {}"
+	"structure_12 set teste = {}" -> "atrib_4 x = 5"
+	"atrib_4 x = 5" -> "print_8 print('3')"
+	"print_8 print('3')" -> "if_8_start if(x == 3)"
+	"if_8_start if(x == 3)" -> "print_9 print('deu?')"
+	"print_9 print('deu?')" -> "if_8_end if(x == 3)"
+	"if_8_start if(x == 3)" -> "if_8_end if(x == 3)"
+	"if_8_end if(x == 3)" -> "for_2_start"
+	"for_2_start" -> "initcicle_2 x = 0"
+	"initcicle_2 x = 0" -> "for_2_cond (x < 5)"
+	"for_2_cond (x < 5)" -> "for_2_end"
+	"for_2_cond (x < 5)" -> "print_10 print('5')"
+	"print_10 print('5')" -> "inc_2 x++"
+	"inc_2 x++" -> "for_2_cond (x < 5)"
+	"for_2_end" -> "repeat_1_start repeat(6)"
+	"repeat_1_start repeat(6)" -> "repeat_1_end repeat(6)"
+	"repeat_1_start repeat(6)" -> "print_11 print(a)"
+	"print_11 print(a)" -> "repeat_1_start repeat(6)"
+	"repeat_1_end repeat(6)" -> "if_8_end if(b == 3)"
+	"if_8_start if(b == 3)" -> "if_8_end if(b == 3)"
+	"if_8_end if(b == 3)" -> "if_8_end if(b == 3)"
+	"if_8_start if(b == 3)" -> "if_8_end if(b == 3)"
+	"if_8_end if(b == 3)" -> "if_8_end if(b == 3)"
+	"if_8_start if(b == 3)" -> "if_8_end if(b == 3)"
+	"if_8_end if(b == 3)" -> "fim"
+	"for_2_cond (x < 5)" [shape=diamond]
+	"repeat_0_start repeat(5)" [shape=diamond]
+	"for_0_cond (a < 20)" [shape=diamond]
+	"if_6_start if(b == 3)" [shape=diamond]
+	"if_7_start if(b == 3)" [shape=diamond]
+	"repeat_1_start repeat(6)" [shape=diamond]
+	"if_0_start if(a == 0)" [shape=diamond]
+	"if_8_start if(x == 3)" [shape=diamond]
+	"if_2_start if(a == 0)" [shape=diamond]
+	"if_1_start if(c == 3)" [shape=diamond]
+	"if_2_start if(c == 3)" [shape=diamond]
+	"if_4_start if(a == 0)" [shape=diamond]
+	"if_4_start if(a == 1)" [shape=diamond]
+	"if_5_start if(b == 3)" [shape=diamond]
+	"if_3_start if(a == 1)" [shape=diamond]
+	"while_0_start while(a < 0)" [shape=diamond]
+	"for_1_cond (a == 3)" [shape=diamond]
+	"while_1_start while(y < 5)" [shape=diamond]
+	"if_8_start if(b == 3)" [shape=diamond]
+	"if_2_start if(c != 3)" [shape=diamond]
+}</body></html>

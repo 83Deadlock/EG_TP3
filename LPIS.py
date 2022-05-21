@@ -1342,7 +1342,7 @@ def geraHTML(atomic_vars, struct_vars, warnings, errors, nrStructs, instrucoes, 
     output_html.write("<head>")
     output_html.write("<meta charset=\"UTF-8\">")
     output_html.write("<link rel=\"stylesheet\" href=\"https://www.w3schools.com/w3css/4/w3.css\">")
-    output_html.write("<title>EG - TP2</title>")
+    output_html.write("<title>EG - TP3</title>")
     output_html.write("</head>")
 
     output_html.write("<body>")
@@ -1354,6 +1354,9 @@ def geraHTML(atomic_vars, struct_vars, warnings, errors, nrStructs, instrucoes, 
                         <a href="output.html" class="w3-bar-item w3-button w3-hover-black w3-padding-16 w3-text-black w3-hover-text-white w3-xlarge">Code Analysis</a>
                         <a href="codeHTML.html" class="w3-bar-item w3-button w3-hover-black w3-padding-16 w3-text-black w3-hover-text-white w3-xlarge">Original Code</a>   
                         <a href="sugestao.html" class="w3-bar-item w3-button w3-hover-black w3-padding-16 w3-text-black w3-hover-text-white w3-xlarge">Nested If's Suggestions</a>
+                        <a href="sdg.html" class="w3-bar-item w3-button w3-hover-black w3-padding-16 w3-text-black w3-hover-text-white w3-xlarge">SDG</a>
+                        <a href="cfg.html" class="w3-bar-item w3-button w3-hover-black w3-padding-16 w3-text-black w3-hover-text-white w3-xlarge">CFG</a>
+                        <a href="mccabe.html" class="w3-bar-item w3-button w3-hover-black w3-padding-16 w3-text-black w3-hover-text-white w3-xlarge">McCabe Complexity and Islands</a>
                 </header>
             </div>
         </div>
@@ -1499,7 +1502,7 @@ def geraSugestao(sugestoes, output_html):
     output_html.write("<head>")
     output_html.write("<meta charset=\"UTF-8\">")
     output_html.write("<link rel=\"stylesheet\" href=\"https://www.w3schools.com/w3css/4/w3.css\">")
-    output_html.write("<title>EG - TP2</title>")
+    output_html.write("<title>EG - TP3</title>")
     output_html.write("</head>")
 
     output_html.write("<body>")
@@ -1511,6 +1514,9 @@ def geraSugestao(sugestoes, output_html):
                         <a href="output.html" class="w3-bar-item w3-button w3-hover-black w3-padding-16 w3-text-black w3-hover-text-white w3-xlarge">Code Analysis</a>
                         <a href="codeHTML.html" class="w3-bar-item w3-button w3-hover-black w3-padding-16 w3-text-black w3-hover-text-white w3-xlarge">Original Code</a>   
                         <a href="sugestao.html" class="w3-bar-item w3-button w3-hover-black w3-padding-16 w3-text-black w3-hover-text-white w3-xlarge">Nested If's Suggestions</a>
+                        <a href="sdg.html" class="w3-bar-item w3-button w3-hover-black w3-padding-16 w3-text-black w3-hover-text-white w3-xlarge">SDG</a>
+                        <a href="cfg.html" class="w3-bar-item w3-button w3-hover-black w3-padding-16 w3-text-black w3-hover-text-white w3-xlarge">CFG</a>
+                        <a href="mccabe.html" class="w3-bar-item w3-button w3-hover-black w3-padding-16 w3-text-black w3-hover-text-white w3-xlarge">McCabe Complexity and Islands</a>
                 </header>
             </div>
         </div>
@@ -1536,6 +1542,111 @@ def geraSugestao(sugestoes, output_html):
     output_html.write("</body>")
     output_html.write("</html>")
 
+def geraSDG(sdg, sdg_html):
+    sdg_html.write("<!DOCTYPE html>")
+    sdg_html.write("<html lang=\"pt\">")
+    sdg_html.write("<head>")
+    sdg_html.write("<meta charset=\"UTF-8\">")
+    sdg_html.write("<link rel=\"stylesheet\" href=\"https://www.w3schools.com/w3css/4/w3.css\">")
+    sdg_html.write("<title>EG - TP3</title>")
+    sdg_html.write("</head>")
+
+    sdg_html.write("<body>")
+    
+    navbar = '''
+    <div class="w3-top">
+            <div class="w3-bar w3-yellow intronav">
+                <header>
+                        <a href="output.html" class="w3-bar-item w3-button w3-hover-black w3-padding-16 w3-text-black w3-hover-text-white w3-xlarge">Code Analysis</a>
+                        <a href="codeHTML.html" class="w3-bar-item w3-button w3-hover-black w3-padding-16 w3-text-black w3-hover-text-white w3-xlarge">Original Code</a>   
+                        <a href="sugestao.html" class="w3-bar-item w3-button w3-hover-black w3-padding-16 w3-text-black w3-hover-text-white w3-xlarge">Nested If's Suggestions</a>
+                        <a href="sdg.html" class="w3-bar-item w3-button w3-hover-black w3-padding-16 w3-text-black w3-hover-text-white w3-xlarge">SDG</a>
+                        <a href="cfg.html" class="w3-bar-item w3-button w3-hover-black w3-padding-16 w3-text-black w3-hover-text-white w3-xlarge">CFG</a>
+                        <a href="mccabe.html" class="w3-bar-item w3-button w3-hover-black w3-padding-16 w3-text-black w3-hover-text-white w3-xlarge">McCabe Complexity and Islands</a>
+                </header>
+            </div>
+        </div>
+    '''
+
+    sdg_html.write(navbar)
+
+    sdg_html.write("<h1> SDG </h1>")
+    sdg_html.write(sdg)
+    sdg_html.write("</body>")
+    sdg_html.write("</html>")
+
+def geraCFG(cfg, cfg_html):
+    cfg_html.write("<!DOCTYPE html>")
+    cfg_html.write("<html lang=\"pt\">")
+    cfg_html.write("<head>")
+    cfg_html.write("<meta charset=\"UTF-8\">")
+    cfg_html.write("<link rel=\"stylesheet\" href=\"https://www.w3schools.com/w3css/4/w3.css\">")
+    cfg_html.write("<title>EG - TP3</title>")
+    cfg_html.write("</head>")
+
+    cfg_html.write("<body>")
+    
+    navbar = '''
+    <div class="w3-top">
+            <div class="w3-bar w3-yellow intronav">
+                <header>
+                        <a href="output.html" class="w3-bar-item w3-button w3-hover-black w3-padding-16 w3-text-black w3-hover-text-white w3-xlarge">Code Analysis</a>
+                        <a href="codeHTML.html" class="w3-bar-item w3-button w3-hover-black w3-padding-16 w3-text-black w3-hover-text-white w3-xlarge">Original Code</a>   
+                        <a href="sugestao.html" class="w3-bar-item w3-button w3-hover-black w3-padding-16 w3-text-black w3-hover-text-white w3-xlarge">Nested If's Suggestions</a>
+                        <a href="sdg.html" class="w3-bar-item w3-button w3-hover-black w3-padding-16 w3-text-black w3-hover-text-white w3-xlarge">SDG</a>
+                        <a href="cfg.html" class="w3-bar-item w3-button w3-hover-black w3-padding-16 w3-text-black w3-hover-text-white w3-xlarge">CFG</a>
+                        <a href="mccabe.html" class="w3-bar-item w3-button w3-hover-black w3-padding-16 w3-text-black w3-hover-text-white w3-xlarge">McCabe Complexity and Islands</a>
+                </header>
+            </div>
+        </div>
+    '''
+
+    cfg_html.write(navbar)
+    cfg_html.write("<h1> CFG </h1>")
+    cfg_html.write(cfg)
+    cfg_html.write("</body>")
+    cfg_html.write("</html>")
+
+def geraMcCabe(mccabe, islands, mccabe_html):
+    mccabe_html.write("<!DOCTYPE html>")
+    mccabe_html.write("<html lang=\"pt\">")
+    mccabe_html.write("<head>")
+    mccabe_html.write("<meta charset=\"UTF-8\">")
+    mccabe_html.write("<link rel=\"stylesheet\" href=\"https://www.w3schools.com/w3css/4/w3.css\">")
+    mccabe_html.write("<title>EG - TP3</title>")
+    mccabe_html.write("</head>")
+
+    mccabe_html.write("<body>")
+    
+    navbar = '''
+    <div class="w3-top">
+            <div class="w3-bar w3-yellow intronav">
+                <header>
+                        <a href="output.html" class="w3-bar-item w3-button w3-hover-black w3-padding-16 w3-text-black w3-hover-text-white w3-xlarge">Code Analysis</a>
+                        <a href="codeHTML.html" class="w3-bar-item w3-button w3-hover-black w3-padding-16 w3-text-black w3-hover-text-white w3-xlarge">Original Code</a>   
+                        <a href="sugestao.html" class="w3-bar-item w3-button w3-hover-black w3-padding-16 w3-text-black w3-hover-text-white w3-xlarge">Nested If's Suggestions</a>
+                        <a href="sdg.html" class="w3-bar-item w3-button w3-hover-black w3-padding-16 w3-text-black w3-hover-text-white w3-xlarge">SDG</a>
+                        <a href="cfg.html" class="w3-bar-item w3-button w3-hover-black w3-padding-16 w3-text-black w3-hover-text-white w3-xlarge">CFG</a>
+                        <a href="mccabe.html" class="w3-bar-item w3-button w3-hover-black w3-padding-16 w3-text-black w3-hover-text-white w3-xlarge">McCabe Complexity and Islands</a>
+                </header>
+            </div>
+        </div>
+    '''
+
+    mccabe_html.write(navbar)
+    mccabe_html.write("<h1> McCabe </h1>")
+    mccabe_html.write("<h1> Islands </h1>")
+    if len(islands) == 0:
+        mccabe_html.write("There are no unreachable code!")
+    else:
+        for i in islands:
+          mccabe_html.write("<p> " + i  + " </p>")  
+    mccabe_html.write("<h1> McCabe </h1>")
+    mccabe_html.write("<h2> McCabe Complexity = "  +str(mccabe) + "</h2>")
+    mccabe_html.write("</body>")
+    mccabe_html.write("</html>")
+
+
 def main():
 
     parserLark = Lark(grammar)
@@ -1552,10 +1663,13 @@ def main():
 
     graphs = GraphInterpreter().visit(parse_tree)
 
-    print("SDG\n\n")
-    print(graphs["sdg"])
-    print("\n\nCFG\n\n")
-    print(graphs["cfg"])
+    sdg_html = open("sdg.html", "w")
+    cfg_html = open("cfg.html", "w")
+    mccabe_html = open("mccabe.html", "w")
+
+    geraSDG(graphs["sdg"], sdg_html)
+    geraCFG(graphs["cfg"], cfg_html)
+    geraMcCabe(graphs["mccabe"], graphs["islands"], mccabe_html)
     
     output_html = open("output.html", "w")
     #1 e 2 e 3
@@ -1617,7 +1731,7 @@ def main():
         </style>
         <head>
             <link rel=\"stylesheet\" href=\"https://www.w3schools.com/w3css/4/w3.css\">
-            <title>EG - TP2</title>
+            <title>EG - TP3</title>
         </head>
         '''
 
@@ -1628,6 +1742,9 @@ def main():
                         <a href="output.html" class="w3-bar-item w3-button w3-hover-black w3-padding-16 w3-text-black w3-hover-text-white w3-xlarge">Code Analysis</a>
                         <a href="codeHTML.html" class="w3-bar-item w3-button w3-hover-black w3-padding-16 w3-text-black w3-hover-text-white w3-xlarge">Original Code</a>   
                         <a href="sugestao.html" class="w3-bar-item w3-button w3-hover-black w3-padding-16 w3-text-black w3-hover-text-white w3-xlarge">Nested If's Suggestions</a>
+                        <a href="sdg.html" class="w3-bar-item w3-button w3-hover-black w3-padding-16 w3-text-black w3-hover-text-white w3-xlarge">SDG</a>
+                        <a href="cfg.html" class="w3-bar-item w3-button w3-hover-black w3-padding-16 w3-text-black w3-hover-text-white w3-xlarge">CFG</a>
+                        <a href="mccabe.html" class="w3-bar-item w3-button w3-hover-black w3-padding-16 w3-text-black w3-hover-text-white w3-xlarge">McCabe Complexity and Islands</a>
                 </header>
             </div>
         </div>

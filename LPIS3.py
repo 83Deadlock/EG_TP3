@@ -13,7 +13,6 @@ class GraphInterpreter (Interpreter):
     def __init__(self):
         self.cfg = "digraph G {\n\t\"entry\" -> "
         self.sdg = "digraph G {\n\t"
-        self.statements = set()
         self.ifID = -1
         self.structureID = -1
         self.atomicID = -1

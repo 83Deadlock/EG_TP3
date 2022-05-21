@@ -1,0 +1,83 @@
+<!DOCTYPE html><html lang="pt"><head><meta charset="UTF-8"><link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"><title>EG - TP3</title></head><body>
+    <div class="w3-top">
+            <div class="w3-bar w3-yellow intronav">
+                <header>
+                        <a href="output.html" class="w3-bar-item w3-button w3-hover-black w3-padding-16 w3-text-black w3-hover-text-white w3-xlarge">Code Analysis</a>
+                        <a href="codeHTML.html" class="w3-bar-item w3-button w3-hover-black w3-padding-16 w3-text-black w3-hover-text-white w3-xlarge">Original Code</a>   
+                        <a href="sugestao.html" class="w3-bar-item w3-button w3-hover-black w3-padding-16 w3-text-black w3-hover-text-white w3-xlarge">Nested If's Suggestions</a>
+                        <a href="sdg.html" class="w3-bar-item w3-button w3-hover-black w3-padding-16 w3-text-black w3-hover-text-white w3-xlarge">SDG</a>
+                        <a href="cfg.html" class="w3-bar-item w3-button w3-hover-black w3-padding-16 w3-text-black w3-hover-text-white w3-xlarge">CFG</a>
+                        <a href="mccabe.html" class="w3-bar-item w3-button w3-hover-black w3-padding-16 w3-text-black w3-hover-text-white w3-xlarge">McCabe Complexity and Islands</a>
+                </header>
+            </div>
+        </div>
+    <h1> SDG </h1>digraph G {
+	"entry" -> "atomic_0 int a"
+	"entry" -> "atrib_0 a = 3"
+	"entry" -> "atomic_1 int b = 1 + 1"
+	"entry" -> "atomic_2 float c"
+	"entry" -> "atrib_1 a = 3"
+	"entry" -> "atomic_3 float d = 3.4"
+	"entry" -> "atomic_4 string e"
+	"entry" -> "atomic_5 string f = 'ola'"
+	"entry" -> "atrib_2 z = 3"
+	"entry" -> "structure_0 set g"
+	"entry" -> "structure_1 set h = {}"
+	"entry" -> "structure_2 set i = {1, 'ola', 3.2}"
+	"entry" -> "structure_3 list j"
+	"entry" -> "structure_4 list k = []"
+	"entry" -> "structure_5 list l = [1, 'ola', 3.2]"
+	"entry" -> "structure_6 tuple m"
+	"entry" -> "structure_7 tuple n = ()"
+	"entry" -> "structure_8 tuple o = (1, 'ola', 3.2)"
+	"entry" -> "atomic_6 int y = 3"
+	"entry" -> "structure_9 dict p"
+	"entry" -> "structure_10 dict q = {}"
+	"entry" -> "structure_11 dict r = {1 : 'ola', 3.2 : 'mundo'}"
+	"entry" -> "print_0 print('start')"
+	"entry" -> "while_0 while(a < 0)"
+	"while_0 while(a < 0)" -> "print_1 print('while')"
+	"entry" -> "initcicle_0 a = 0"
+	"entry" -> "for_0 for(a < 20)"
+	"for_0 for(a < 20)" -> "print_2 print('oi')"
+	"for_0 for(a < 20)" -> "inc_0 a++""entry" -> "repeat_0 repeat(5)"
+	"repeat_0 repeat(5)" -> "print_3 print('ola')"
+	"entry" -> "if_0 if(a == 0)"
+	"if_0 if(a == 0)" -> "then0"
+	"then0" -> "if_1 if(c == 3)"
+	"if_1 if(c == 3)" -> "then1"
+	"then1" -> "print_4 print('olaMundo')"
+	"then1" -> "initcicle_1 a = 3"
+	"entry" -> "for_1 for(a == 3)"
+	"for_1 for(a == 3)" -> "print_5 print('reset')"
+	"for_1 for(a == 3)" -> "if_2 if(c != 3)"
+	"if_2 if(c != 3)" -> "then2"
+	"then2" -> "print_6 print(b)"
+	"for_1 for(a == 3)" -> "inc_1 a++""entry" -> "if_3 if(a == 1)"
+	"if_3 if(a == 1)" -> "then3"
+	"then3" -> "if_4 if(a == 0)"
+	"if_4 if(a == 0)" -> "then4"
+	"then4" -> "print_7 print('coco')"
+	"then4" -> "atomic_7 int y = 3 + 1"
+	"then4" -> "while_1 while(y < 5)"
+	"while_1 while(y < 5)" -> "atrib_3 y = y + 1"
+	"entry" -> "if_5 if(b == 3)"
+	"if_5 if(b == 3)" -> "then5"
+	"then5" -> "if_6 if(b == 3)"
+	"if_6 if(b == 3)" -> "then6"
+	"then6" -> "if_7 if(b == 3)"
+	"if_7 if(b == 3)" -> "then7"
+	"then7" -> "atomic_8 int x = 3 + 1"
+	"then7" -> "structure_12 set teste = {}"
+	"then7" -> "atrib_4 x = 5"
+	"then7" -> "print_8 print('3')"
+	"then7" -> "if_8 if(x == 3)"
+	"if_8 if(x == 3)" -> "then8"
+	"then8" -> "print_9 print('deu?')"
+	"then8" -> "initcicle_2 x = 0"
+	"entry" -> "for_2 for(x < 5)"
+	"for_2 for(x < 5)" -> "print_10 print('5')"
+	"for_2 for(x < 5)" -> "inc_2 x++""then8" -> "repeat_1 repeat(6)"
+	"repeat_1 repeat(6)" -> "print_11 print(a)"
+	
+}</body></html>
