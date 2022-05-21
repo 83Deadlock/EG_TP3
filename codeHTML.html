@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+    <html>
+        <style>
+            .error {
+                position: relative;
+                display: inline-block;
+                border-bottom: 1px dotted black;
+                color: red;
+            }
+
+            .code {
+                position: relative;
+                display: inline-block;
+            }
+
+            .comment {
+                position: relative;
+                display: inline-block;
+                color: grey;
+            }
+
+            .error .errortext {
+                visibility: hidden;
+                width: 200px;
+                background-color: #555;
+                color: #fff;
+                text-align: center;
+                border-radius: 6px;
+                padding: 5px 0;
+                position: absolute;
+                z-index: 1;
+                bottom: 125%;
+                left: 50%;
+                margin-left: -40px;
+                opacity: 0;
+                transition: opacity 0.3s;
+            }
+
+            .error .errortext::after {
+                content: "";
+                position: absolute;
+                top: 100%;
+                left: 20%;
+                margin-left: -5px;
+                border-width: 5px;
+                border-style: solid;
+                border-color: #555 transparent transparent transparent;
+            }
+
+            .error:hover .errortext {
+                visibility: visible;
+                opacity: 1;
+            }
+        </style>
+        <head>
+            <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+            <title>EG - TP2</title>
+        </head>
+        <body>
+
+    <div class="w3-top">
+            <div class="w3-bar w3-yellow intronav">
+                <header>
+                        <a href="output.html" class="w3-bar-item w3-button w3-hover-black w3-padding-16 w3-text-black w3-hover-text-white w3-xlarge">Code Analysis</a>
+                        <a href="codeHTML.html" class="w3-bar-item w3-button w3-hover-black w3-padding-16 w3-text-black w3-hover-text-white w3-xlarge">Original Code</a>   
+                        <a href="sugestao.html" class="w3-bar-item w3-button w3-hover-black w3-padding-16 w3-text-black w3-hover-text-white w3-xlarge">Nested If's Suggestions</a>
+                </header>
+            </div>
+        </div>
+    <pre><body>
+<p class="code">
+-{
+</p>
+<p class="comment">
+	/*int a;
+    int b = 2;
+    float c;
+    float d = 3.4;
+    string e;
+    string f = "ola";
+
+    set g;
+    set h = {};
+    set i = {2, 3.4, "ola"};
+
+    list j;
+    list k = [];
+    list l = [2, 3.4, "ola"];
+
+    tuple m;
+    tuple n = ();
+    tuple o = (2, 3.4, "ola");
+
+    dict p;
+    dict q = {};
+    dict r = {1:"ola", 3.2:"mundo"}; 
+
+    a = 3 + 1;
+    e = "mundo";
+    c = 4.3 + 3.14;
+
+    print("oi");
+    read(a);
+
+    if(a==3){
+        a = 5;
+        a = 2; 
+    }
+
+    if(a == 4){
+        a = 5;
+    } else {
+        a = 4;
+    }
+
+    while(a < 5){
+        a = a + 1;
+        a = 3;
+    }
+
+    
+    repeat(5){
+        a = 2;
+    }
+    a = 5;*/
+</p>
+<p class="code">
+	for(<div class="error">a = 0<span class="errortext">Variable was not declared</span></div>, <div class="error">b = 3<span class="errortext">Variable was not declared</span></div>; <div class="error">a<span class="errortext">Undeclared Variable</span></div> < 5; <div class="error">a++<span class="errortext">Undeclared Variable</span></div>, <div class="error">b--<span class="errortext">Undeclared Variable</span></div>){
+</p>
+<p class="code">
+		<div class="error">b = 4<span class="errortext">Variable undeclared</span></div>;
+</p>
+<p class="code">
+		<div class="error">c = 0<span class="errortext">Variable undeclared</span></div>;
+</p>
+<p class="code">
+	}
+</p>
+<p class="code">
+}-
+</p>
+
+</body></html>
