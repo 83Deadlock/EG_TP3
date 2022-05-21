@@ -1,5 +1,5 @@
 -{
-    /*int a;
+    int a;
     int b = 2;
     float c;
     float d = 3.4;
@@ -45,11 +45,17 @@
         a = 3;
     }
 
+    if(1){
+        if(2){
+            print("ola mundo!");
+        }
+    }
+    
     
     repeat(5){
         a = 2;
     }
-    a = 5;*/
+    a = 5;
 
     for(a = 0, b = 3; a < 5; a++,b--){
         b = 4;

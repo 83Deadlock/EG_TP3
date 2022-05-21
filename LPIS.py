@@ -764,7 +764,7 @@ class MyInterpreter (Interpreter):
         else:
             if not self.body_cat:
                 self.html_body += tree.children[1].value
-            value = input("> ")
+            value = input("read(" + tree.children[1].value + ")> ")
             typeV = self.atomic_vars[tree.children[1]][0]
             initV = 1
             usedV = 1
@@ -1046,17 +1046,17 @@ class MyInterpreter (Interpreter):
 
         if not self.body_cat:
             self.ident_level -= 1
-            self.code += "}\n"
+            self.code += "}"
             if not self.body_cat:
                 self.html_body += "<p class=\"code\">\n"
                 for i in range(self.ident_level):
                     self.html_body += "\t"
-            self.html_body += "}\n</p>\n"
+            self.html_body += "}\n</p>"
         else: 
             self.ident_level -= 1
             for i in range(self.ident_level):
                 self.bodyCat += "\t"
-            self.bodyCat += "}\n"
+            self.bodyCat += "}n"
         pass
 
     def op(self,tree):
@@ -1212,10 +1212,20 @@ class MyInterpreter (Interpreter):
                 self.code += str(r)
                 self.html_body += str(r)
 
+        if tree.children[0].type == 'DECIMAL':
+            r = float(tree.children[0])
+            if self.if_concat:
+                self.ifCat += str(r)
+            elif self.body_cat:
+                self.bodyCat += str(r)
+            else:
+                self.code += str(r)
+                self.html_body += str(r)
+
         elif tree.children[0].type == 'VARNAME':
 
             if str(tree.children[0]) not in self.errors.keys():
-                self.erros[str(tree.children[0])] = set()
+                self.errors[str(tree.children[0])] = set()
 
             if str(tree.children[0]) not in self.atomic_vars.keys():
                 self.errors[str(tree.children[0])].add("Undeclared variable \"" + str(tree.children[0]) + "\"")
@@ -1271,7 +1281,7 @@ FOR: "for"
 ciclerepeat: REPEAT PE (SIGNED_INT | VARNAME) PD body
 REPEAT: "repeat"
 body: open program close
-atrib: VARNAME EQUAL op PV
+atrib: VARNAME EQUAL elem PV
 inc: VARNAME INC
 INC: "++"
 dec: VARNAME DEC
@@ -1571,7 +1581,16 @@ def geraSDG(sdg, sdg_html):
     sdg_html.write(navbar)
 
     sdg_html.write("<h1> SDG </h1>")
-    sdg_html.write(sdg)
+    sdg_html.write("<p>")
+    i = 0
+    aux = sdg.splitlines()
+    for line in aux:
+        if i == 0 or i == len(aux)-1:
+            sdg_html.write(line + "<br>")
+        else:
+            sdg_html.write(line + "<br>")
+        i += 1
+    sdg_html.write("</p>")
     sdg_html.write("</body>")
     sdg_html.write("</html>")
 
@@ -1603,7 +1622,16 @@ def geraCFG(cfg, cfg_html):
 
     cfg_html.write(navbar)
     cfg_html.write("<h1> CFG </h1>")
-    cfg_html.write(cfg)
+    cfg_html.write("<p>")
+    i = 0
+    aux = cfg.splitlines()
+    for line in aux:
+        if i == 0 or i == len(aux)-1:
+            cfg_html.write(line + "<br>")
+        else:
+            cfg_html.write(line + "<br>")
+        i += 1
+    cfg_html.write("</p>")
     cfg_html.write("</body>")
     cfg_html.write("</html>")
 
@@ -1637,7 +1665,7 @@ def geraMcCabe(mccabe, islands, mccabe_html):
     mccabe_html.write("<h1> McCabe </h1>")
     mccabe_html.write("<h1> Islands </h1>")
     if len(islands) == 0:
-        mccabe_html.write("There are no unreachable code!")
+        mccabe_html.write("There is no unreachable code!")
     else:
         for i in islands:
           mccabe_html.write("<p> " + i  + " </p>")  
@@ -1668,6 +1696,7 @@ def main():
     mccabe_html = open("mccabe.html", "w")
 
     geraSDG(graphs["sdg"], sdg_html)
+    #print(graphs["sdg"])
     geraCFG(graphs["cfg"], cfg_html)
     geraMcCabe(graphs["mccabe"], graphs["islands"], mccabe_html)
     

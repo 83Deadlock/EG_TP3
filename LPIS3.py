@@ -122,7 +122,7 @@ class GraphInterpreter (Interpreter):
         self.cfg += "}"
 
         self.sdg += "\n}"
-        #print(self.cfg)
+        print(self.cfg)
         #print(self.sdg)
         #print(self.islands)
 
@@ -396,34 +396,38 @@ class GraphInterpreter (Interpreter):
 
         if not self.second:
             self.ifID += 1
-        self.cfg += "\"if_" + str(self.ifID) + "_start if("
-        self.sdg += "\"if_" + str(self.ifID) + " if("
+
+        id = self.ifID
 
         l = len(tree.children)
+
+        self.cfg += "\"if_" + str(id) + "_start if("
+
+        self.sdg += "\"if_" + str(id) + " if("
+
         self.visit(tree.children[2])
 
-        self.cfg += ")\"\n\t\"if_" + str(self.ifID) + "_start if("
-        self.sdg += ")\"\n\t\"if_" + str(self.ifID) + " if("
+        self.cfg += ")\"\n\t\"if_" + str(id) + "_start if("
 
-        #self.second = True
+        self.sdg += ")\"\n\t\"if_" + str(id) + " if("
+
         self.visit(tree.children[2])
-        #self.second = False
 
         self.cfg += ")\" -> "
-        self.sdg += ")\" -> \"then" + str(self.ifID) + "\"\n\t"
+
+        self.sdg += ")\" -> \"then" + str(id) + "\"\n\t"
  
         self.incicle = True
         # body
         #self.visit(tree.children[4].children[1])
         for c in tree.children[4].children[1].children:
             #print(c.pretty())
-            self.sdg += "\"then" + str(self.ifID) + "\" -> "
+            self.sdg += "\"then" + str(id) + "\" -> "
             self.visit(c)
         #fim do if
         self.incicle = False
 
-
-        self.cfg += "\"if_" + str(self.ifID) + "_end if("
+        self.cfg += "\"if_" + str(id) + "_end if("
         self.second = True
         self.visit(tree.children[2])
 
@@ -431,36 +435,36 @@ class GraphInterpreter (Interpreter):
         self.second = False
         
         if(tree.children[(l-2)] == "else"):
-            self.cfg += "\"if_" + str(self.ifID) + "_start if("
-            self.sdg += "\"if_" + str(self.ifID) + " if("
+            self.cfg += "\"if_" + str(id) + "_start if("
+            self.sdg += "\"if_" + str(id) + " if("
             self.visit(tree.children[2])
             self.cfg += ")\" -> "
-            self.sdg += ")\" -> \"else" + str(self.ifID) + "\"\n\t"
+            self.sdg += ")\" -> \"else" + str(id) + "\"\n\t"
 
             self.incicle = True
             for c in tree.children[(l-1)].children[1].children:
-                self.sdg += "\"else" + str(self.ifID) + "\" -> "
+                self.sdg += "\"else" + str(id) + "\" -> "
                 self.visit(c)
             #self.visit(tree.children[(l-1)])
             self.incicle = False
 
             self.second = True
-            self.cfg += "\"if_" + str(self.ifID) + "_end if("
+            self.cfg += "\"if_" + str(id) + "_end if("
             self.visit(tree.children[2])
             self.cfg += ")\"\n\t"
             self.second = False
 
         else:
             self.second = True
-            self.cfg += "\"if_" + str(self.ifID) + "_start if("
+            self.cfg += "\"if_" + str(id) + "_start if("
             self.visit(tree.children[2])
-            self.cfg += ")\" -> \"if_" + str(self.ifID) + "_end if("
+            self.cfg += ")\" -> \"if_" + str(id) + "_end if("
             self.visit(tree.children[2])
             self.cfg += ")\"\n\t"
             self.second = False
 
         self.second = True
-        self.cfg += "\"if_" + str(self.ifID) + "_end if("
+        self.cfg += "\"if_" + str(id) + "_end if("
 
         self.visit(tree.children[2])
 
@@ -471,31 +475,34 @@ class GraphInterpreter (Interpreter):
 
     def ciclewhile(self,tree):
         self.whileID += 1
+        id = self.whileID
 
-        self.cfg += "\"while_" + str(self.whileID) + "_start while("
-        self.sdg += "\"while_" + str(self.whileID) + " while("
+        self.cfg += "\"while_" + str(id) + "_start while("
+        self.sdg += "\"while_" + str(id) + " while("
         self.visit(tree.children[2])
-        self.cfg += ")\"\n\t\"while_" + str(self.whileID) + "_start while("
+        self.cfg += ")\"\n\t\"while_" + str(id) + "_start while("
         self.sdg += ")\"\n\t"
         self.second = True
         self.visit(tree.children[2])
-        self.cfg += ")\" -> \"while_" + str(self.whileID) + "_end while("
+        self.cfg += ")\" -> \"while_" + str(id) + "_end while("
         self.visit(tree.children[2])
-        self.cfg += ")\"\n\t\"while_" + str(self.whileID) + "_start while("
+        self.cfg += ")\"\n\t\"while_" + str(id) + "_start while("
         self.visit(tree.children[2])
         self.cfg += ")\" -> "
         self.second = False
 
         for c in tree.children[4].children[1].children:
-            self.sdg += "\"while_" + str(self.whileID) + " while("
+            self.sdg += "\"while_" + str(id) + " while("
+            self.only = True
             self.visit(tree.children[2])
+            self.only = False
             self.sdg += ")\" -> "
             self.visit(c)
 
         self.second = True
-        self.cfg += "\"while_" + str(self.whileID) + "_start while("
+        self.cfg += "\"while_" + str(id) + "_start while("
         self.visit(tree.children[2])
-        self.cfg += ")\"\n\t\"while_" + str(self.whileID) + "_end while("
+        self.cfg += ")\"\n\t\"while_" + str(id) + "_end while("
         self.visit(tree.children[2])
         self.cfg += ")\" -> "
         self.second = False
@@ -519,7 +526,7 @@ class GraphInterpreter (Interpreter):
             self.visit(c)
         
         self.cfg += "\"repeat_" + str(self.repeatID) + "_start repeat(" + tree.children[2].value
-        self.cfg += ")\"\n\t\"repeat_" + str(self.whileID) + "_end repeat(" + tree.children[2].value
+        self.cfg += ")\"\n\t\"repeat_" + str(self.repeatID) + "_end repeat(" + tree.children[2].value
         self.cfg += ")\" -> "        
 
         pass

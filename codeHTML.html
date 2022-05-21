@@ -74,26 +74,14 @@
 <p class="code">
 -{
 </p>
-<p class="comment">
-	/*atoms*/
-</p>
 <p class="code">
 	int a;
 </p>
 <p class="code">
-	a = 3;
-</p>
-<p class="comment">
-	/*read(a);*/
-</p>
-<p class="code">
-	int b = 1 + 1;
+	int b = 2;
 </p>
 <p class="code">
 	float c;
-</p>
-<p class="code">
-	a = 3;
 </p>
 <p class="code">
 	float d = 3.4;
@@ -105,19 +93,13 @@
 	string f = "ola";
 </p>
 <p class="code">
-	<div class="error">z = 3<span class="errortext">Variable undeclared</span></div>;
-</p>
-<p class="comment">
-	/*structures*/
-</p>
-<p class="code">
 	set g;
 </p>
 <p class="code">
 	set h = {};
 </p>
 <p class="code">
-	set i = {1, "ola", 3.2};
+	set i = {2, 3.4, "ola"};
 </p>
 <p class="code">
 	list j;
@@ -126,7 +108,7 @@
 	list k = [];
 </p>
 <p class="code">
-	list l = [1, "ola", 3.2];
+	list l = [2, 3.4, "ola"];
 </p>
 <p class="code">
 	tuple m;
@@ -135,10 +117,7 @@
 	tuple n = ();
 </p>
 <p class="code">
-	tuple o = (1, "ola", 3.2);
-</p>
-<p class="code">
-	int y = 3;
+	tuple o = (2, 3.4, "ola");
 </p>
 <p class="code">
 	dict p;
@@ -150,153 +129,93 @@
 	dict r = {1 : "ola", 3.2 : "mundo"};
 </p>
 <p class="code">
-	print("start");
+	a = 3 + 1;
 </p>
 <p class="code">
-	while(a < 0){
+	e = "mundo";
 </p>
 <p class="code">
-		print("while");
+	c = 4.3 + 3.14;
+</p>
+<p class="code">
+	print("oi");
+</p>
+<p class="code">
+	read(a);
+</p>
+<p class="code">
+	if(a == 3){
+</p>
+<p class="code">
+		a = 5;
+</p>
+<p class="code">
+		a = 2;
 </p>
 <p class="code">
 	}
+</p><p class="code">
+	if(a == 4){
 </p>
 <p class="code">
-	for(a = 0; a < 20; a++){
-</p>
-<p class="code">
-		print("oi");
+		a = 5;
 </p>
 <p class="code">
 	}
+</p> else {
 </p>
 <p class="code">
+		a = 4;
+</p>
+<p class="code">
+	}
+</p><p class="code">
+	while(a < 5){
+</p>
+<p class="code">
+		a = a + 1;
+</p>
+<p class="code">
+		a = 3;
+</p>
+<p class="code">
+	}
+</p><p class="code">
+	if(1){
+</p>
+<p class="code">
+		if(2){
+</p>
+<p class="code">
+			print("ola mundo!");
+</p>
+<p class="code">
+		}
+</p><p class="code">
+	}
+</p><p class="code">
 	repeat(5){
 </p>
 <p class="code">
-		print("ola");
+		a = 2;
 </p>
 <p class="code">
 	}
+</p><p class="code">
+	a = 5;
 </p>
 <p class="code">
-	if(a == 0){
+	for(a = 0, b = 3; a < 5; a++, b--){
 </p>
 <p class="code">
-		if(<div class="error">c<span class="errortext">Variable was never initialized</span></div> == 3){
+		b = 4;
 </p>
 <p class="code">
-			print("olaMundo");
-</p>
-<p class="code">
-			for(a = 3; a == 3; a++){
-</p>
-<p class="code">
-				print("reset");
-</p>
-<p class="code">
-				if(<div class="error">c<span class="errortext">Variable was never initialized</span></div> != 3){
-</p>
-<p class="code">
-					print(b);
-</p>
-<p class="code">
-				}
-</p>
-<p class="code">
-			}
-</p>
-<p class="code">
-		}
+		c = 0;
 </p>
 <p class="code">
 	}
-</p>
-<p class="code">
-	if(a == 1){
-</p>
-<p class="code">
-		if(a == 0){
-</p>
-<p class="code">
-			print("coco");
-</p>
-<p class="code">
-			<div class="error">int y = 3 + 1<span class="errortext">Variable declared more than once!</span></div>;
-</p>
-<p class="code">
-			while(y < 5){
-</p>
-<p class="code">
-				y = y + 1;
-</p>
-<p class="code">
-			}
-</p>
-<p class="code">
-		}
-</p>
-<p class="code">
-	}
-</p>
-<p class="code">
-	if(b == 3){
-</p>
-<p class="code">
-		if(b == 3){
-</p>
-<p class="code">
-			if(b == 3){
-</p>
-<p class="code">
-				int x = 3 + 1;
-</p>
-<p class="code">
-				set teste = {};
-</p>
-<p class="code">
-				x = 5;
-</p>
-<p class="code">
-				print("3");
-</p>
-<p class="code">
-				if(x == 3){
-</p>
-<p class="code">
-					print("deu?");
-</p>
-<p class="code">
-				}
-</p>
-<p class="code">
-				for(x = 0; x < 5; x++){
-</p>
-<p class="code">
-					print("5");
-</p>
-<p class="code">
-				}
-</p>
-<p class="code">
-				repeat(6){
-</p>
-<p class="code">
-					print(a);
-</p>
-<p class="code">
-				}
-</p>
-<p class="code">
-			}
-</p>
-<p class="code">
-		}
-</p>
-<p class="code">
-	}
-</p>
-<p class="code">
+</p><p class="code">
 }-
 </p>
 
